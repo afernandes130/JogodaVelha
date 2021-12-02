@@ -46,27 +46,30 @@ $(document).ready( function(){
     })
 
     function jogada(id){
-        var icone = '';
-        var ponto = 0;
-
-        if((rodada % 2) == 1){
-            icone = 'url("imagens/marcacao_1.png")'
-            ponto = -1
-        }
-        else{
-            icone = 'url("imagens/marcacao_2.png")'
-            ponto = 1
-        }
-
-        rodada++;
-        $('#'+id).css('background-image',icone);
         var position = id.split('-')
         // alert('p0: ' + position[0] + ' p1: ' + position[1])
-
-        matriz_jogo[position[0]][position[1]] = ponto;
         
-        checapontos();
+        if(matriz_jogo[position[0]][position[1]] == 0){
 
+            var icone = '';
+            var ponto = 0;
+
+            if((rodada % 2) == 1){
+                icone = 'url("imagens/marcacao_1.png")'
+                ponto = -1
+            }
+            else{
+                icone = 'url("imagens/marcacao_2.png")'
+                ponto = 1
+            }
+
+            rodada++;
+            $('#'+id).css('background-image',icone);
+
+            matriz_jogo[position[0]][position[1]] = ponto;
+
+            checapontos();
+        }
     }
 
     function checapontos(){
